@@ -23,15 +23,32 @@ h2 { font-size:20px; color:var(--main); padding-left:14px; border-left:4px solid
 .card p { font-size:14px; margin-top:6px; }
 .video-box { margin-top:14px; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#000; }
 .video-box video { width:100%; display:block; max-height:480px; }
+.placeholder { display:flex; align-items:center; justify-content:center; min-height:180px; color:var(--muted); font-size:13px; background:#eef1f5; border:1px dashed #b8c2cf; border-radius:8px; margin-top:14px; }
 .works { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
-.work { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; cursor:pointer; transition:transform .15s; }
-.work:hover { transform:translateY(-2px); }
+.work { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+.work .img-box { height:150px; background:#eef1f5; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px; }
 .work img { width:100%; height:150px; object-fit:cover; display:block; }
+.work { cursor: pointer; transition: transform .15s; }
+.work:hover { transform: translateY(-2px); }
 .work .cap { padding:8px 12px; font-size:12.5px; }
 footer { text-align:center; color:var(--muted); font-size:12px; padding-top:30px; border-top:1px solid var(--line); }
-.lightbox { position:fixed; inset:0; z-index:999; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; cursor:zoom-out; }
-.lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; box-shadow:0 8px 40px rgba(0,0,0,.5); }
-.lightbox .lb-close { position:absolute; top:18px; right:24px; color:#fff; font-size:40px; line-height:1; cursor:pointer; font-family:Arial,sans-serif; }
+/* 点击放大 */
+.lightbox {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,.85);
+  display: flex; align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox img {
+  max-width: 90vw; max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 0 8px 40px rgba(0,0,0,.5);
+}
+.lightbox .lb-close {
+  position: absolute; top: 18px; right: 24px;
+  color: #fff; font-size: 40px; line-height: 1;
+  cursor: pointer; font-family: Arial, sans-serif;
+}
 </style>
 </head>
 <body>
@@ -40,44 +57,53 @@ footer { text-align:center; color:var(--muted); font-size:12px; padding-top:30px
     <h1>陈帅 · 作品集</h1>
     <div class="sub">虚拟现实技术专业 · 2027届 · VR/AR 开发 / 技术美术（TA）</div>
     <div class="links">
+      <a href="简历_技术美术TA.html">简历</a>
       <a href="mailto:2427676334@qq.com">邮箱联系</a>
-      <a href="#" id="githubLink">GitHub</a>
+      
     </div>
   </div>
-
   <section>
     <h2>项目</h2>
     <div class="card">
       <h3>UE5 校园漫游系统</h3>
       <span class="tag">Unreal Engine 5</span><span class="tag">蓝图</span>
       <p>基于 UE5 蓝图搭建覆盖 3 栋主要校园建筑的虚拟漫游场景，实现主菜单 UI、建筑导航与交互触发逻辑。使用地形与植被系统构建校园环境，完成场景光照布置。</p>
-      <div class="video-box"><video controls preload="none" src="ue5_campus.mp4"></video></div>
-    </div>
-    <div class="card">
+      <div class="video-box"><video controls preload="metadata" src="素材库/视频/UE5校园_压缩.mp4"></video></div>
+    </div><div class="card">
       <h3>Unity AR 脸谱识别</h3>
       <span class="tag">Unity</span><span class="tag">AR Foundation</span>
       <p>基于 Unity AR Foundation 实现 6 个京剧脸谱图案的图片识别与 AR 内容展示，扫描脸谱图案触发 3D 模型呈现，完成交互闭环。</p>
-      <div class="video-box"><video controls preload="none" src="ar_face.mp4"></video></div>
-    </div>
-    <div class="card">
+      <div class="video-box"><video controls preload="metadata" src="素材库/视频/AR脸谱.mp4"></video></div>
+    </div><div class="card">
       <h3>小狐狸 / 海洋动画</h3>
       <span class="tag">3D 动画</span><span class="tag">渲染</span>
       <p>3D 动画与渲染练习作品，体现建模、动画与渲染表现能力。</p>
-      <div class="video-box"><video controls preload="none" src="fox.mp4"></video></div>
-      <div class="video-box"><video controls preload="none" src="ocean.mp4"></video></div>
+      <div class="video-box"><video controls preload="metadata" src="素材库/视频/小狐狸.mp4"></video></div><div class="video-box"><video controls preload="metadata" src="素材库/视频/海洋.mp4"></video></div>
     </div>
   </section>
-
   <section>
     <h2>建模作品</h2>
-    <div class="works">
-      <div class="work" onclick="openLightbox(this)"><img src="maya_building.jpg" alt="Maya 实践楼"><div class="cap">Maya 实践楼</div></div>
-      <div class="work" onclick="openLightbox(this)"><img src="metro.jpg" alt="地铁场景"><div class="cap">地铁场景</div></div>
-      <div class="work" onclick="openLightbox(this)"><img src="metro_compare.jpg" alt="地铁对比"><div class="cap">地铁对比</div></div>
-      <div class="work" onclick="openLightbox(this)"><img src="tech_hall.png" alt="科技展厅"><div class="cap">科技展厅</div></div>
+    <div class="works"><div class="work" onclick="openLightbox(this)">
+      <img src="素材库/图片/maya实践楼.jpg" alt="Maya 实践楼">
+      <div class="cap">Maya 实践楼</div>
+    </div><div class="work" onclick="openLightbox(this)">
+      <img src="素材库/图片/地铁.jpg" alt="地铁场景">
+      <div class="cap">地铁场景</div>
+    </div><div class="work" onclick="openLightbox(this)">
+      <img src="素材库/图片/地铁对比.jpg" alt="地铁对比">
+      <div class="cap">地铁对比</div>
+    </div><div class="work" onclick="openLightbox(this)">
+      <img src="素材库/图片/科技展厅.png" alt="科技展厅">
+      <div class="cap">科技展厅</div>
+    </div></div>
+  </section>
+  <section>
+    <h2>GitHub 代码仓库</h2>
+    <div class="card">
+      <p>每个项目一个仓库，README 写清功能与运行方式。</p>
+      <p class="placeholder">GitHub 仓库链接（待填写）</p>
     </div>
   </section>
-
   <footer>陈帅 · 作品集 · 2026 · 联系：2427676334@qq.com</footer>
 </div>
 <script>
@@ -98,19 +124,6 @@ function openLightbox(el) {
 function closeLightbox(lb) {
   if (lb && lb.parentNode) lb.parentNode.removeChild(lb);
 }
-</script>
-
-<script>
-// 懒加载: 点击视频区域才真正加载播放
-document.querySelectorAll('.video-box video').forEach(function(v){
-  v.addEventListener('click', function(){
-    if (v.dataset.loaded !== '1') {
-      v.dataset.loaded = '1';
-      v.load();
-      v.play();
-    }
-  });
-});
 </script>
 </body>
 </html>
