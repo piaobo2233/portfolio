@@ -51,20 +51,20 @@ footer { text-align:center; color:var(--muted); font-size:12px; padding-top:30px
       <h3>UE5 校园漫游系统</h3>
       <span class="tag">Unreal Engine 5</span><span class="tag">蓝图</span>
       <p>基于 UE5 蓝图搭建覆盖 3 栋主要校园建筑的虚拟漫游场景，实现主菜单 UI、建筑导航与交互触发逻辑。使用地形与植被系统构建校园环境，完成场景光照布置。</p>
-      <div class="video-box"><video controls preload="metadata" src="ue5_campus.mp4"></video></div>
+      <div class="video-box"><video controls preload="none" src="ue5_campus.mp4"></video></div>
     </div>
     <div class="card">
       <h3>Unity AR 脸谱识别</h3>
       <span class="tag">Unity</span><span class="tag">AR Foundation</span>
       <p>基于 Unity AR Foundation 实现 6 个京剧脸谱图案的图片识别与 AR 内容展示，扫描脸谱图案触发 3D 模型呈现，完成交互闭环。</p>
-      <div class="video-box"><video controls preload="metadata" src="ar_face.mp4"></video></div>
+      <div class="video-box"><video controls preload="none" src="ar_face.mp4"></video></div>
     </div>
     <div class="card">
       <h3>小狐狸 / 海洋动画</h3>
       <span class="tag">3D 动画</span><span class="tag">渲染</span>
       <p>3D 动画与渲染练习作品，体现建模、动画与渲染表现能力。</p>
-      <div class="video-box"><video controls preload="metadata" src="fox.mp4"></video></div>
-      <div class="video-box"><video controls preload="metadata" src="ocean.mp4"></video></div>
+      <div class="video-box"><video controls preload="none" src="fox.mp4"></video></div>
+      <div class="video-box"><video controls preload="none" src="ocean.mp4"></video></div>
     </div>
   </section>
 
@@ -98,6 +98,19 @@ function openLightbox(el) {
 function closeLightbox(lb) {
   if (lb && lb.parentNode) lb.parentNode.removeChild(lb);
 }
+</script>
+
+<script>
+// 懒加载: 点击视频区域才真正加载播放
+document.querySelectorAll('.video-box video').forEach(function(v){
+  v.addEventListener('click', function(){
+    if (v.dataset.loaded !== '1') {
+      v.dataset.loaded = '1';
+      v.load();
+      v.play();
+    }
+  });
+});
 </script>
 </body>
 </html>
